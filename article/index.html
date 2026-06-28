@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ali Uğur Özkeleş</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f2ede6;color:#1a1a1a;line-height:1.7}
+:root{
+  --navy:#0d1b2a;--teal:#1a4a5e;--gold:#c9a84c;
+  --cream:#f2ede6;--muted:#7a7a7a;--border:#e2d9cc;
+  --radius:12px;
+}
+
+/* NAV */
+nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:900;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.9);border-radius:99px;
+  padding:.6rem 1.5rem;display:flex;align-items:center;gap:2rem;
+  box-shadow:0 4px 24px rgba(13,27,42,.10)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--navy);font-weight:700;text-decoration:none;white-space:nowrap}
+.back-btn{display:flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+.back-btn:hover{color:var(--navy)}
+.back-btn svg{width:14px;height:14px}
+
+/* BANNER */
+.article-banner{width:100%;height:420px;background:var(--navy);background-size:cover;background-position:center;position:relative}
+.article-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,27,42,.7))}
+.no-banner{height:160px;background:linear-gradient(135deg,var(--navy),var(--teal))}
+
+/* ARTICLE */
+.article-wrap{max-width:740px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.article-meta{font-size:.78rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem}
+.article-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--navy);line-height:1.2;margin-bottom:1.2rem;font-weight:700}
+.article-divider{width:48px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:2rem}
+.article-body{font-size:1.05rem;line-height:1.9;color:#2c2c2c;white-space:pre-wrap}
+.article-body p+p{margin-top:1.2rem}
+.source-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;padding:.7rem 1.4rem;
+  background:var(--navy);color:#fff;border-radius:99px;font-size:.85rem;font-weight:600;text-decoration:none;transition:.2s}
+.source-link:hover{background:var(--teal)}
+.source-link svg{width:14px;height:14px}
+
+/* RELATED */
+.related{max-width:740px;margin:0 auto;padding:0 1.5rem 5rem}
+.related-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.2rem;padding-top:2rem;border-top:2px solid var(--border)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.related-card{background:#fff;border-radius:var(--radius);overflow:hidden;text-decoration:none;
+  box-shadow:0 2px 12px rgba(13,27,42,.07);transition:.2s;cursor:pointer}
+.related-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(13,27,42,.12)}
+.related-card-img{height:110px;background:linear-gradient(135deg,var(--navy),var(--teal));background-size:cover;background-position:center}
+.related-card-body{padding:.9rem}
+.related-card-date{font-size:.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
+.related-card-title{font-family:'Playfair Display',serif;font-size:.9rem;color:var(--navy);line-height:1.35;font-weight:600}
+
+@media(max-width:600px){
+  .article-wrap,.related{padding-left:1rem;padding-right:1rem}
+  .article-banner{height:260px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Ali Uğur Özkeleş</a>
+  <a href="index.html#yazilar" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Tüm Yazılar
+  </a>
+</nav>
+
+<div style="padding-top:80px" id="page"></div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const id = parseInt(params.get('id'));
+
+async function load() {
+  const r = await fetch('../content.json?t=' + Date.now());
+  const data = await r.json();
+  const articles = data.articles || [];
+  const article = articles.find(a => a.id === id);
+  if (!article) { document.getElementById('page').innerHTML = '<div style="text-align:center;padding:5rem">Yazı bulunamadı. <a href="index.html">Ana sayfa</a></div>'; return; }
+
+  document.title = article.title + ' — Ali Uğur Özkeleş';
+
+  const others = articles.filter(a => a.id !== id);
+  const text = (article.content || article.summary || '');
+
+  document.getElementById('page').innerHTML = `
+    ${article.image
+      ? `<div class="article-banner" style="background-image:url(${article.image})"></div>`
+      : `<div class="article-banner no-banner"></div>`}
+
+    <div class="article-wrap">
+      <div class="article-meta">${article.date}</div>
+      <h1 class="article-title">${article.title}</h1>
+      <div class="article-divider"></div>
+      <div class="article-body">${text}</div>
+      ${article.url ? `<a href="${article.url}" class="source-link" target="_blank" rel="noopener">
+        Kaynağa Git
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>` : ''}
+    </div>
+
+    ${others.length ? `
+    <div class="related">
+      <div class="related-title">Diğer Yazılar</div>
+      <div class="related-grid">
+        ${others.map(a => `
+          <div class="related-card" onclick="location.href='../article/?id=${a.id}'">
+            <div class="related-card-img" ${a.image ? `style="background-image:url(${a.image})"` : ''}></div>
+            <div class="related-card-body">
+              <div class="related-card-date">${a.date}</div>
+              <div class="related-card-title">${a.title}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>` : ''}
+  `;
+}
+
+load();
+</script>
+</body>
+</html>

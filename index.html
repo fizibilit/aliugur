@@ -1154,7 +1154,7 @@ function renderArticles(articles) {
   const allArticles = window._allArticles = articles;
   let html = '';
   if (featured) {
-    html += `<div class="article-featured" style="cursor:pointer" onclick="location.href='article.html?id=${featured.id}'">
+    html += `<div class="article-featured" style="cursor:pointer" onclick="location.href='article/?id=${featured.id}'">
       ${featured.image ? `<div style="height:180px;background:url(${featured.image}) center/cover no-repeat;border-radius:var(--radius) var(--radius) 0 0"></div>` : '<div class="article-featured-top"><span class="label">Öne Çıkan Yazı</span></div>'}
       <div class="article-featured-body">
         <div class="article-featured-date">${featured.date}</div>
@@ -1165,7 +1165,7 @@ function renderArticles(articles) {
     </div>`;
   }
   others.forEach(a => {
-    html += `<div class="article-card" style="cursor:pointer" onclick="location.href='article.html?id=${a.id}'">
+    html += `<div class="article-card" style="cursor:pointer" onclick="location.href='article/?id=${a.id}'">
       ${a.image ? `<div style="height:120px;background:url(${a.image}) center/cover no-repeat"></div>` : '<div class="article-card-top"></div>'}
       <div class="article-card-body">
         <div class="article-card-date">${a.date}</div>
