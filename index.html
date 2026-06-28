@@ -10,12 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#f0ece4;color:#111;line-height:1.6;overflow-x:hidden;cursor:none}
-
-/* CUSTOM CURSOR */
-.cursor{position:fixed;width:10px;height:10px;background:#111;border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s ease}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid #111;border-radius:50%;pointer-events:none;z-index:9998;transition:transform .08s ease,width .2s,height .2s,border-color .2s}
-.cursor-ring.expand{width:60px;height:60px;border-color:#c9a84c}
+body{font-family:'Inter',sans-serif;background:#f0ece4;color:#111;line-height:1.6;overflow-x:hidden}
 
 :root{
   --bg:#f0ece4;
@@ -174,8 +169,6 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em}
 </head>
 <body>
 
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="curRing"></div>
 <div id="prog"></div>
 
 <!-- NAV -->
@@ -401,24 +394,6 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em}
 </footer>
 
 <script>
-// CURSOR
-const cur = document.getElementById('cur');
-const curRing = document.getElementById('curRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=(mx-5)+'px';cur.style.top=(my-5)+'px';
-});
-(function loopRing(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  curRing.style.left=(rx-18)+'px';curRing.style.top=(ry-18)+'px';
-  requestAnimationFrame(loopRing);
-})();
-document.querySelectorAll('a,button,.kurum-row').forEach(el=>{
-  el.addEventListener('mouseenter',()=>curRing.classList.add('expand'));
-  el.addEventListener('mouseleave',()=>curRing.classList.remove('expand'));
-});
-
 // PROGRESS
 const prog = document.getElementById('prog');
 window.addEventListener('scroll',()=>{
