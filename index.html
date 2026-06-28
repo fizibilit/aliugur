@@ -6,275 +6,176 @@
 <title>Ali Uğur Özkeleş</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
 <style>
-/* ── RESET ── */
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f0ece4;color:#111;line-height:1.6;overflow-x:hidden}
 
-/* ── PROGRESS ── */
-#prog{position:fixed;top:0;left:0;height:1px;width:0;background:#fff;z-index:9999;transition:width .1s}
+:root{
+  --bg:#f0ece4;
+  --ink:#111111;
+  --gold:#c9a84c;
+  --muted:#888;
+  --line:#d5cec4;
+}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;
-  z-index:900;
-  padding:1.8rem 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.nav-logo{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.1rem;letter-spacing:.15em;
-  color:#fff;
-}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{
-  font-size:.72rem;font-weight:400;
-  letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.55);
-  transition:color .25s;
-}
-.nav-links a:hover{color:#fff}
-.nav-cta{
-  font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.55);transition:color .25s;
-}
-.nav-cta:hover{color:#fff}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.burger span{display:block;width:22px;height:1px;background:#fff}
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--ink);z-index:9997;transition:width .1s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:1.4rem 3rem;display:flex;align-items:center;justify-content:space-between}
 .mobile-menu{display:none}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.12em;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--ink);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);padding:.45rem 1.2rem;border-radius:99px;color:var(--ink);text-decoration:none;transition:background .25s,color .25s}
+.nav-cta:hover{background:var(--ink);color:var(--bg)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+.burger span{display:block;width:24px;height:1.5px;background:var(--ink)}
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:flex-end;
-  padding:0 2.5rem 3.5rem;
-  position:relative;
-  border-bottom:1px solid rgba(255,255,255,.1);
-}
-.hero-label{
-  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.35);
-  margin-bottom:1.8rem;
-}
-.hero-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(5rem,12vw,13rem);
-  line-height:.88;
-  letter-spacing:-.01em;
-  color:#fff;
-  overflow:hidden;
-}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 3rem;position:relative}
+.hero-photo{width:clamp(100px,11vw,160px);opacity:0;transform:translateX(-40px);animation:photoIn 1s ease 0.5s forwards;flex-shrink:0;margin-bottom:-2rem}
+.hero-photo img{width:100%;display:block;filter:drop-shadow(0 12px 24px rgba(0,0,0,.13))}
+@keyframes photoIn{to{opacity:1;transform:translateX(0)}}
+.hero-eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9vw,10rem);line-height:.92;letter-spacing:-.01em;color:var(--ink);overflow:hidden}
 .hero-title span{display:block}
-.hero-title .italic{
-  font-family:'Playfair Display',serif;
-  font-style:italic;font-weight:700;
-  font-size:clamp(4rem,9.5vw,10.5rem);
-}
-.hero-photo{
-  position:absolute;
-  right:2.5rem;bottom:0;
-  width:clamp(200px,20vw,300px);
-  opacity:0;
-  animation:photoSlide 1s ease .4s forwards;
-}
-.hero-photo img{
-  width:100%;
-  filter:drop-shadow(0 0 40px rgba(0,0,0,.8));
-}
-@keyframes photoSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero-title .italic-name{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(3.5rem,8vw,9rem)}
+.hero-sub{margin-top:2.5rem;display:grid;grid-template-columns:auto 1fr 1fr;gap:2rem;align-items:flex-end;border-top:1px solid var(--line);padding-top:2rem}
+.hero-desc{font-size:1rem;color:#444;max-width:460px;line-height:1.7}
+.hero-actions{display:flex;gap:1rem;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+.btn-primary{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:.7rem 1.8rem;border-radius:99px;text-decoration:none;transition:background .25s}
+.btn-primary:hover{background:#333}
+.btn-outline{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);color:var(--ink);padding:.68rem 1.8rem;border-radius:99px;text-decoration:none;transition:background .25s,color .25s}
+.btn-outline:hover{background:var(--ink);color:var(--bg)}
+.hero-scroll{position:absolute;right:3rem;top:50%;transform:translateY(-50%);writing-mode:vertical-lr;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.8rem}
+.hero-scroll::before{content:'';display:block;width:1px;height:60px;background:var(--line)}
 
-.hero-bottom{
-  margin-top:2.5rem;
-  display:flex;justify-content:space-between;align-items:flex-end;
-  border-top:1px solid rgba(255,255,255,.1);
-  padding-top:1.8rem;
-  flex-wrap:wrap;gap:1.5rem;
-}
-.hero-desc{
-  font-size:.92rem;font-weight:300;
-  color:rgba(255,255,255,.55);
-  max-width:400px;line-height:1.75;
-}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-w{
-  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.35);
-  padding:.6rem 1.5rem;border-radius:99px;
-  color:#fff;transition:border-color .25s,background .25s;
-}
-.btn-w:hover{border-color:#fff;background:rgba(255,255,255,.07)}
-.btn-wf{
-  font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  background:#fff;color:#0a0a0a;
-  padding:.6rem 1.5rem;border-radius:99px;
-  transition:background .25s,color .25s;
-}
-.btn-wf:hover{background:rgba(255,255,255,.85)}
+/* İSLAMİ GEÇİŞ */
+.islamic-transition{position:relative;height:180px;overflow:hidden;background:linear-gradient(to bottom,var(--bg) 0%,#1a1209 100%)}
+.islamic-svg{position:absolute;top:0;left:0;width:100%;height:100%}
+.pattern-anim{animation:patternDrift 18s linear infinite}
+@keyframes patternDrift{from{transform:translateX(0)}to{transform:translateX(-90px)}}
+.islamic-transition::before{content:'';position:absolute;top:0;left:0;right:0;height:70px;background:linear-gradient(to bottom,var(--bg),transparent);z-index:2}
+.islamic-transition::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to top,#111,transparent);z-index:2}
 
-/* ── MARQUEE ── */
-.marquee-wrap{overflow:hidden;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
-.marquee-inner{display:inline-flex;white-space:nowrap;animation:marquee 22s linear infinite}
+/* MARQUEE */
+.marquee-wrap{background:var(--ink);overflow:hidden;padding:.9rem 0;border-top:1px solid #222;border-bottom:1px solid #222}
+.marquee-inner{display:inline-flex;white-space:nowrap;animation:marquee 20s linear infinite}
 .marquee-inner:hover{animation-play-state:paused}
-.marquee-item{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.1rem;letter-spacing:.08em;
-  color:rgba(255,255,255,.25);
-  padding:0 2rem;
-}
-.marquee-item b{color:rgba(255,255,255,.55)}
+.marquee-item{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:var(--bg);padding:0 2.5rem}
+.marquee-item span{color:var(--gold)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── SECTIONS ── */
-section{padding:6rem 2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
-.s-label{
-  font-size:.66rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);
-  margin-bottom:3.5rem;
-  display:flex;align-items:center;gap:1.2rem;
-}
-.s-label::before{content:'';display:block;width:28px;height:1px;background:rgba(255,255,255,.2)}
-.s-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,6vw,7rem);
-  line-height:.92;color:#fff;
-  margin-bottom:3rem;
-}
+/* SECTION BASE */
+section{padding:7rem 3rem}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:4rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';display:block;width:40px;height:1px;background:var(--line)}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,7.5rem);line-height:.95;color:var(--ink);margin-bottom:3rem}
+.divider{border:none;border-top:1px solid var(--line);margin:0}
 
-/* ── HAKKINDA ── */
+/* HAKKINDA */
+.hakkinda{background:#fff}
 .hakkinda-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.hakkinda-text p{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:1.4rem}
-.stats{display:flex;flex-direction:column}
-.stat{padding:1.8rem 0;border-top:1px solid rgba(255,255,255,.08)}
-.stat-n{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:#fff;line-height:1}
-.stat-l{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.3rem}
+.hakkinda-text p{font-size:1.05rem;color:#444;line-height:1.8;margin-bottom:1.5rem}
+.hakkinda-aside{display:flex;flex-direction:column;gap:2.5rem}
+.stat-item{padding:2rem 0;border-top:1px solid var(--line)}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--ink);line-height:1}
+.stat-label{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
 
-/* ── KURUMLAR ── */
-.kurum-list{display:flex;flex-direction:column}
-.kurum-row{
-  display:grid;grid-template-columns:1fr auto;
-  align-items:center;
-  padding:1.8rem 0;
-  border-top:1px solid rgba(255,255,255,.08);
-  transition:padding-left .3s;
-  cursor:default;
-}
-.kurum-row:last-child{border-bottom:1px solid rgba(255,255,255,.08)}
-.kurum-row:hover{padding-left:1rem}
-.kurum-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(1.8rem,3.5vw,3.2rem);
-  color:rgba(255,255,255,.45);
-  transition:color .3s;
-}
-.kurum-row:hover .kurum-name{color:#fff}
-.kurum-meta{text-align:right}
-.kurum-tag{
-  font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);
-}
-.kurum-year{font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.2);margin-top:.2rem}
+/* KURUMLAR */
+.kurumlar{background:var(--bg)}
+.kurumlar-list{display:flex;flex-direction:column}
+.kurum-row{display:grid;grid-template-columns:3fr 2fr 1fr;align-items:center;padding:2rem 0;border-top:1px solid var(--line);transition:background .2s;cursor:none}
+.kurum-row:last-child{border-bottom:1px solid var(--line)}
+.kurum-row:hover{padding-left:1.5rem}
+.kurum-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);color:var(--ink);transition:color .2s}
+.kurum-row:hover .kurum-name{color:var(--gold)}
+.kurum-desc{font-size:.88rem;color:var(--muted)}
+.kurum-year{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:right}
+.all-transition{transition:all .3s ease}
 
-/* ── İRFAN ── */
-.irfan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
-.irfan-card{
-  background:#0a0a0a;
-  padding:2.5rem 2rem;
-  transition:background .3s;
-}
-.irfan-card:hover{background:#111}
-.irfan-icon{font-size:1.5rem;margin-bottom:1.5rem;opacity:.6}
-.irfan-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.7rem;color:#fff;margin-bottom:.6rem;
-}
-.irfan-sub{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.05em}
+/* IRFan */
+.irfan{background:var(--ink);color:var(--bg)}
+.irfan .section-label{color:rgba(255,255,255,.4)}
+.irfan .section-label::before{background:rgba(255,255,255,.2)}
+.irfan .section-title{color:var(--bg)}
+.irfan .divider{border-color:rgba(255,255,255,.1)}
+.irfan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.08)}
+.irfan-card{background:var(--ink);padding:2.5rem;transition:background .3s}
+.irfan-card:hover{background:#1a1a1a}
+.irfan-card-icon{font-size:1.8rem;margin-bottom:1.5rem}
+.irfan-card-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--bg);margin-bottom:.8rem}
+.irfan-card-sub{font-size:.83rem;color:rgba(255,255,255,.45);letter-spacing:.05em}
 
-/* ── GENÇLİK ── */
-.genclik-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
-.genclik-card{
-  background:#0a0a0a;
-  padding:2.5rem 2rem;
-  transition:background .3s;
-}
-.genclik-card:hover{background:#111}
-.genclik-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:3rem;color:rgba(255,255,255,.12);line-height:1;margin-bottom:1.2rem;
-}
-.genclik-title{font-size:.92rem;font-weight:500;color:#fff;margin-bottom:.5rem}
-.genclik-sub{font-size:.78rem;color:rgba(255,255,255,.3)}
+/* GENCLIK */
+.genclik{background:#fff}
+.genclik-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.genclik-card{padding:2.5rem;border:1px solid var(--line);transition:border-color .3s,transform .3s}
+.genclik-card:hover{border-color:var(--ink);transform:translateY(-4px)}
+.genclik-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--line)}
+.genclik-title{font-size:1rem;font-weight:600;color:var(--ink);margin:.8rem 0 .4rem}
+.genclik-sub{font-size:.83rem;color:var(--muted)}
 
-/* ── VİDEO ── */
-.video-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;gap:2rem;flex-wrap:wrap}
-.video-head p{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.5);max-width:380px;line-height:1.7}
-.video-main{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px}
-.video-main iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-.video-grid{display:grid;grid-template-columns:3fr 2fr;gap:1.5rem;margin-top:1.5rem}
-.video-sm{display:flex;flex-direction:column;gap:1.5rem}
-.video-sm-item{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;background:#111}
-.video-sm-item iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+/* VIDEO */
+.video-sec{background:var(--bg)}
+.video-header{display:grid;grid-template-columns:1fr auto;align-items:flex-end;margin-bottom:3rem;gap:2rem}
+.video-header p{font-size:.95rem;color:#555;max-width:440px;line-height:1.7}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:4px}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.video-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem}
+.video-thumb{aspect-ratio:16/10;background:#ddd;border-radius:4px;overflow:hidden;position:relative}
+.video-thumb iframe{width:100%;height:100%;border:none}
+.video-small{display:flex;flex-direction:column;gap:2rem}
+.video-small-item{aspect-ratio:16/9;background:#ddd;border-radius:4px;overflow:hidden}
+.video-small-item iframe{width:100%;height:100%;border:none}
 
-/* ── İLETİŞİM ── */
-.iletisim{min-height:70vh;display:flex;flex-direction:column;justify-content:space-between}
-.contact-huge{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(4rem,10vw,11rem);
-  line-height:.88;color:#fff;
-  margin-bottom:3rem;
-}
-.contact-links{display:flex;gap:2.5rem;flex-wrap:wrap}
-.contact-links a{
-  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.35);
-  transition:color .25s;border-bottom:1px solid transparent;padding-bottom:2px;
-}
-.contact-links a:hover{color:#fff;border-color:rgba(255,255,255,.4)}
-.iletisim-foot{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;
-  flex-wrap:wrap;gap:1rem;
-}
-.iletisim-copy{font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.08em}
+/* ILETISIM */
+.iletisim{background:var(--ink);color:var(--bg);min-height:60vh;display:flex;flex-direction:column;justify-content:space-between}
+.iletisim .section-label{color:rgba(255,255,255,.4)}
+.iletisim .section-label::before{background:rgba(255,255,255,.2)}
+.contact-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,10rem);line-height:.95;color:var(--bg);margin-bottom:3rem}
+.contact-big a{color:var(--gold);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .3s}
+.contact-big a:hover{border-color:var(--gold)}
+.iletisim-footer{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;flex-wrap:wrap;gap:1.5rem}
+.iletisim-links{display:flex;gap:2rem}
+.iletisim-links a{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.iletisim-links a:hover{color:var(--bg)}
+.iletisim-copy{font-size:.75rem;color:rgba(255,255,255,.3)}
 
-/* ── FOOTER ── */
-footer{
-  padding:1.5rem 2.5rem;
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-footer p{font-size:.65rem;color:rgba(255,255,255,.18);letter-spacing:.1em;text-transform:uppercase}
+/* FOOTER */
+footer{background:#0a0a0a;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em}
 
-/* ── REVEAL ── */
-.r{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease}
-.r.on{opacity:1;transform:none}
-.r2{opacity:0;transform:translateX(-32px);transition:opacity .9s ease,transform .9s ease}
-.r2.on{opacity:1;transform:none}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:none}
 
-/* ── MOBILE ── */
+/* MOBILE NAV */
 @media(max-width:768px){
   nav{padding:1.2rem 1.5rem}
-  .nav-links{display:none}
-  .nav-cta{display:none}
+  .nav-links,.nav-cta{display:none}
   .burger{display:flex}
-  .mobile-menu{
-    display:none!important;position:fixed;inset:0;
-    background:#0a0a0a;z-index:850;
-    flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-  }
+  .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:800;flex-direction:column;align-items:center;justify-content:center;gap:3rem}
   .mobile-menu.open{display:flex}
-  .mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#fff}
+  .mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--ink);text-decoration:none}
   .hero{padding:5rem 1.5rem 2rem}
-  .hero-photo{width:clamp(140px,40vw,200px);right:1.5rem}
-  .hero-bottom{flex-direction:column;gap:1.5rem}
+  .hero-sub{grid-template-columns:1fr}
+  .hero-scroll{display:none}
   section{padding:4rem 1.5rem}
-  .hakkinda-grid,.irfan-grid,.genclik-grid,.video-grid{grid-template-columns:1fr}
-  .kurum-row{grid-template-columns:1fr}
-  .contact-huge{font-size:clamp(3rem,14vw,8rem)}
+  .hakkinda-grid,.irfan-grid,.genclik-grid{grid-template-columns:1fr}
+  .kurumlar-list .kurum-row{grid-template-columns:1fr;gap:.3rem}
+  .kurum-year{text-align:left}
+  .video-grid{grid-template-columns:1fr}
+  .video-header{grid-template-columns:1fr}
+  .iletisim-footer{flex-direction:column;align-items:flex-start}
   footer{flex-direction:column;gap:.5rem;text-align:center}
 }
 </style>
@@ -284,7 +185,7 @@ footer p{font-size:.65rem;color:rgba(255,255,255,.18);letter-spacing:.1em;text-t
 <div id="prog"></div>
 
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <a href="#" class="nav-logo">AUÖ</a>
   <ul class="nav-links">
     <li><a href="#hakkinda">Hakkında</a></li>
@@ -294,136 +195,191 @@ footer p{font-size:.65rem;color:rgba(255,255,255,.18);letter-spacing:.1em;text-t
     <li><a href="#video">Medya</a></li>
   </ul>
   <a href="#iletisim" class="nav-cta">İletişim</a>
-  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#hakkinda" class="ml">Hakkında</a>
-  <a href="#kurumlar" class="ml">Kurumlar</a>
-  <a href="#irfan" class="ml">İrfan</a>
-  <a href="#genclik" class="ml">Gençlik</a>
-  <a href="#video" class="ml">Medya</a>
-  <a href="#iletisim" class="ml">İletişim</a>
+  <a href="#hakkinda" class="mob-link">Hakkında</a>
+  <a href="#kurumlar" class="mob-link">Kurumlar</a>
+  <a href="#irfan" class="mob-link">İrfan</a>
+  <a href="#genclik" class="mob-link">Gençlik</a>
+  <a href="#video" class="mob-link">Medya</a>
+  <a href="#iletisim" class="mob-link">İletişim</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-photo"><img src="au-nobg.png" alt="Ali Uğur Özkeleş"/></div>
-  <div class="hero-label r">Eğitimci &amp; STK Temsilcisi — Kilis · İstanbul</div>
-  <h1 class="hero-title r">
+  <div class="hero-eyebrow reveal">Eğitimci &amp; STK Temsilcisi — Kilis · İstanbul</div>
+  <h1 class="hero-title reveal">
     <span>ALİ UĞUR</span>
-    <span class="italic">Özkeleş</span>
+    <span class="italic-name">Özkeleş</span>
   </h1>
-  <div class="hero-bottom r">
+  <div class="hero-sub reveal">
+    <div class="hero-photo"><img src="au-nobg.png" alt="Ali Uğur Özkeleş"/></div>
     <p class="hero-desc">1993'ten bugüne, Kilis'ten İstanbul'a uzanan; İslami düşünce ve irfan geleneğiyle yoğrulmuş nesiller yetiştirme yolculuğu.</p>
-    <div class="hero-ctas">
-      <a href="#video" class="btn-wf">Sohbetleri Dinle</a>
-      <a href="#hakkinda" class="btn-w">Hakkımda</a>
+    <div class="hero-actions">
+      <a href="#video" class="btn-primary">Sohbetleri Dinle</a>
+      <a href="#hakkinda" class="btn-outline">Hakkımda</a>
     </div>
   </div>
 </section>
 
+<!-- İSLAMİ DESEN GEÇİŞ -->
+<div class="islamic-transition">
+  <svg class="islamic-svg" viewBox="0 0 1440 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="star8" x="0" y="0" width="90" height="90" patternUnits="userSpaceOnUse">
+        <!-- 8 köşeli yıldız (Selçuklu/Osmanlı motifi) -->
+        <g fill="none" stroke="#c9a84c" stroke-width=".8" opacity=".7">
+          <!-- Dış sekizgen yıldız -->
+          <polygon points="45,5 55,30 80,20 70,45 95,45 75,62 85,87 60,75 55,100 45,75 20,87 30,62 10,45 35,45 25,20 50,30" transform="translate(-5,-5) scale(1)"/>
+          <!-- İç kare -->
+          <rect x="27" y="27" width="36" height="36" transform="rotate(45 45 45)" stroke-width=".6"/>
+          <!-- Merkez çiçek -->
+          <circle cx="45" cy="45" r="8" stroke-width=".7"/>
+          <circle cx="45" cy="45" r="4" stroke-width=".5"/>
+          <!-- Yatay/dikey çizgiler -->
+          <line x1="45" y1="15" x2="45" y2="35"/>
+          <line x1="45" y1="55" x2="45" y2="75"/>
+          <line x1="15" y1="45" x2="35" y2="45"/>
+          <line x1="55" y1="45" x2="75" y2="45"/>
+          <!-- Diagonal -->
+          <line x1="24" y1="24" x2="37" y2="37"/>
+          <line x1="53" y1="53" x2="66" y2="66"/>
+          <line x1="66" y1="24" x2="53" y2="37"/>
+          <line x1="37" y1="53" x2="24" y2="66"/>
+        </g>
+      </pattern>
+      <linearGradient id="fadeGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f0ece4" stop-opacity="1"/>
+        <stop offset="30%" stop-color="#f0ece4" stop-opacity="0"/>
+        <stop offset="70%" stop-color="#f0ece4" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#111111" stop-opacity="1"/>
+      </linearGradient>
+      <mask id="fadeMask">
+        <rect width="1440" height="180" fill="url(#fadeGrad)"/>
+      </mask>
+    </defs>
+    <!-- Desen katmanı -->
+    <rect width="1440" height="180" fill="url(#star8)" class="pattern-anim"/>
+    <!-- Üst soluk geçiş -->
+    <rect width="1440" height="60" fill="url(#fadeTop)"/>
+    <!-- Alt siyaha geçiş -->
+    <rect y="120" width="1440" height="60" fill="url(#fadeBot)"/>
+  </svg>
+</div>
+
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-inner">
-    <span class="marquee-item"><b>İlim</b> ◆</span>
-    <span class="marquee-item"><b>İrfan</b> ◆</span>
-    <span class="marquee-item"><b>Eğitim</b> ◆</span>
-    <span class="marquee-item"><b>Gençlik</b> ◆</span>
-    <span class="marquee-item"><b>Vakıf</b> ◆</span>
-    <span class="marquee-item"><b>Hutbe</b> ◆</span>
-    <span class="marquee-item"><b>Sohbet</b> ◆</span>
-    <span class="marquee-item"><b>Arifan</b> ◆</span>
-    <span class="marquee-item"><b>İlim</b> ◆</span>
-    <span class="marquee-item"><b>İrfan</b> ◆</span>
-    <span class="marquee-item"><b>Eğitim</b> ◆</span>
-    <span class="marquee-item"><b>Gençlik</b> ◆</span>
-    <span class="marquee-item"><b>Vakıf</b> ◆</span>
-    <span class="marquee-item"><b>Hutbe</b> ◆</span>
-    <span class="marquee-item"><b>Sohbet</b> ◆</span>
-    <span class="marquee-item"><b>Arifan</b> ◆</span>
+    <span class="marquee-item">İlim <span>◆</span></span>
+    <span class="marquee-item">İrfan <span>◆</span></span>
+    <span class="marquee-item">Eğitim <span>◆</span></span>
+    <span class="marquee-item">Gençlik <span>◆</span></span>
+    <span class="marquee-item">Vakıf <span>◆</span></span>
+    <span class="marquee-item">Hutbe <span>◆</span></span>
+    <span class="marquee-item">Sohbet <span>◆</span></span>
+    <span class="marquee-item">Arifan <span>◆</span></span>
+    <span class="marquee-item">İlim <span>◆</span></span>
+    <span class="marquee-item">İrfan <span>◆</span></span>
+    <span class="marquee-item">Eğitim <span>◆</span></span>
+    <span class="marquee-item">Gençlik <span>◆</span></span>
+    <span class="marquee-item">Vakıf <span>◆</span></span>
+    <span class="marquee-item">Hutbe <span>◆</span></span>
+    <span class="marquee-item">Sohbet <span>◆</span></span>
+    <span class="marquee-item">Arifan <span>◆</span></span>
   </div>
 </div>
 
 <!-- HAKKINDA -->
-<section id="hakkinda">
-  <div class="s-label r">01 — Hakkında</div>
-  <h2 class="s-title r">Yarım Asırlık<br>Bir İrfan ve<br>Eğitim Davası</h2>
-  <div class="hakkinda-grid">
-    <div class="hakkinda-text r2">
+<section class="hakkinda" id="hakkinda">
+  <div class="section-label reveal">01 — Hakkında</div>
+  <h2 class="section-title reveal">Yarım Asırlık<br>Bir İrfan ve<br>Eğitim Davası</h2>
+  <hr class="divider"/>
+  <div class="hakkinda-grid" style="margin-top:4rem">
+    <div class="hakkinda-text reveal-left">
       <p>Ali Uğur Özkeleş, 1993 yılından itibaren Kilis'te başlayan ve bugün İstanbul'a uzanan eğitim ve irfan yolculuğunda binlerce gencin manevi rehberi olmuştur.</p>
       <p>İslami düşünce ve irfan geleneğini özümseyerek aktaran Özkeleş, kurduğu vakıf ve dernekler aracılığıyla toplumsal dönüşüme katkı sağlamaya devam etmektedir.</p>
       <p>Kilis ve İstanbul'da sürdürdüğü irfan dersleri, Cuma hutbeleri ve Arifan gençlik toplulukları ile nesiller boyu sürecek bir ilim mirası inşa etmektedir.</p>
     </div>
-    <div class="stats r">
-      <div class="stat">
-        <div class="stat-n" data-target="30">0+</div>
-        <div class="stat-l">Yılı aşkın eğitim hizmeti</div>
+    <div class="hakkinda-aside reveal">
+      <div class="stat-item">
+        <div class="stat-num" data-target="30">0</div>
+        <div class="stat-label">Yılı aşkın eğitim hizmeti</div>
       </div>
-      <div class="stat">
-        <div class="stat-n" data-target="4">0+</div>
-        <div class="stat-l">Kurum ve vakıf</div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="4">0</div>
+        <div class="stat-label">Kurum ve vakıf</div>
       </div>
-      <div class="stat">
-        <div class="stat-n" data-target="3">0+</div>
-        <div class="stat-l">Şehirde Arifan topluluğu</div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="3">0</div>
+        <div class="stat-label">Şehirde Arifan topluluğu</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- KURUMLAR -->
-<section id="kurumlar">
-  <div class="s-label r">02 — Kurumlar &amp; STK</div>
-  <h2 class="s-title r">Vakıf, Dernek ve<br>Kurum Çalışmaları</h2>
-  <div class="kurum-list">
-    <div class="kurum-row r">
+<section class="kurumlar" id="kurumlar">
+  <div class="section-label reveal">02 — Kurumlar &amp; STK</div>
+  <h2 class="section-title reveal">Vakıf, Dernek ve<br>Kurum Çalışmaları</h2>
+  <hr class="divider"/>
+  <div class="kurumlar-list" style="margin-top:1rem">
+    <div class="kurum-row all-transition reveal">
       <div class="kurum-name">Hicret Eğitim Kültür Vakfı</div>
-      <div class="kurum-meta"><div class="kurum-tag">Hizmetin Temel Taşı</div><div class="kurum-year">Kurucu</div></div>
+      <div class="kurum-desc">Hizmetin Temel Taşı</div>
+      <div class="kurum-year">Kurucu</div>
     </div>
-    <div class="kurum-row r">
+    <div class="kurum-row all-transition reveal">
       <div class="kurum-name">İYİDER Kilis</div>
-      <div class="kurum-meta"><div class="kurum-tag">İlim, Yardımlaşma ve İrfan</div><div class="kurum-year">2000</div></div>
+      <div class="kurum-desc">İlim, Yardımlaşma ve İrfan Derneği</div>
+      <div class="kurum-year">2000</div>
     </div>
-    <div class="kurum-row r">
+    <div class="kurum-row all-transition reveal">
       <div class="kurum-name">İYİDER İstanbul</div>
-      <div class="kurum-meta"><div class="kurum-tag">Fatih'te İlim Halkası</div><div class="kurum-year">İstanbul</div></div>
+      <div class="kurum-desc">Fatih'te Yeşeren İlim Halkası</div>
+      <div class="kurum-year">İstanbul</div>
     </div>
-    <div class="kurum-row r">
+    <div class="kurum-row all-transition reveal">
       <div class="kurum-name">Bilfen Dershanesi</div>
-      <div class="kurum-meta"><div class="kurum-tag">Akademik &amp; Ahlaki Eğitim</div><div class="kurum-year">Kilis</div></div>
+      <div class="kurum-desc">Akademik Başarı ve Ahlaki Eğitimin Birlikteliği</div>
+      <div class="kurum-year">Kilis</div>
     </div>
   </div>
 </section>
 
 <!-- İRFAN -->
-<section id="irfan">
-  <div class="s-label r">03 — İlim &amp; İrfan</div>
-  <h2 class="s-title r">Cuma Hutbeleri ve<br>Düzenli İrfan Dersleri</h2>
-  <div class="irfan-grid r">
+<section class="irfan" id="irfan">
+  <div class="section-label reveal">03 — İlim &amp; İrfan</div>
+  <h2 class="section-title reveal">Cuma Hutbeleri ve<br>Düzenli İrfan Dersleri</h2>
+  <hr class="divider" style="border-color:rgba(255,255,255,.1);margin-bottom:3rem"/>
+  <div class="irfan-grid reveal">
     <div class="irfan-card">
-      <div class="irfan-icon">🕌</div>
-      <div class="irfan-name">Kilis İrfan Dersleri</div>
-      <div class="irfan-sub">Şehrin Manevi Dinamiği</div>
+      <div class="irfan-card-icon">🕌</div>
+      <div class="irfan-card-title">Kilis İrfan Dersleri</div>
+      <div class="irfan-card-sub">Şehrin Manevi Dinamiği</div>
     </div>
     <div class="irfan-card">
-      <div class="irfan-icon">📖</div>
-      <div class="irfan-name">Kilis Cuma Hutbeleri</div>
-      <div class="irfan-sub">Minberden Gönüllere Sesleniş</div>
+      <div class="irfan-card-icon">📖</div>
+      <div class="irfan-card-title">Kilis Cuma Hutbeleri</div>
+      <div class="irfan-card-sub">Minberden Gönüllere Sesleniş</div>
     </div>
     <div class="irfan-card">
-      <div class="irfan-icon">🌙</div>
-      <div class="irfan-name">İstanbul İrfan Dersleri</div>
-      <div class="irfan-sub">Fatih'te Düzenli Aylık Buluşmalar</div>
+      <div class="irfan-card-icon">🌙</div>
+      <div class="irfan-card-title">İstanbul İrfan Dersleri</div>
+      <div class="irfan-card-sub">Fatih'te Düzenli Aylık Buluşmalar</div>
     </div>
   </div>
 </section>
 
 <!-- GENÇLİK -->
-<section id="genclik">
-  <div class="s-label r">04 — Gençlik</div>
-  <h2 class="s-title r">Arifan Üniversite<br>Öğrenci Toplulukları</h2>
-  <div class="genclik-grid r">
+<section class="genclik" id="genclik">
+  <div class="section-label reveal">04 — Gençlik</div>
+  <h2 class="section-title reveal">Arifan Üniversite<br>Öğrenci Toplulukları</h2>
+  <hr class="divider" style="margin-bottom:3rem"/>
+  <div class="genclik-grid reveal">
     <div class="genclik-card">
       <div class="genclik-num">01</div>
       <div class="genclik-title">Arifan Kilis</div>
@@ -442,49 +398,51 @@ footer p{font-size:.65rem;color:rgba(255,255,255,.18);letter-spacing:.1em;text-t
   </div>
 </section>
 
-<!-- VİDEO -->
-<section id="video">
-  <div class="video-head r">
+<!-- VIDEO -->
+<section class="video-sec" id="video">
+  <div class="video-header reveal">
     <div>
-      <div class="s-label" style="margin-bottom:1rem">05 — Medya</div>
-      <h2 class="s-title" style="margin-bottom:0">Son Sohbetler ve<br>Video Kayıtları</h2>
+      <div class="section-label">05 — Medya</div>
+      <h2 class="section-title" style="margin-bottom:0">Son Sohbetler ve<br>Video Kayıtları</h2>
     </div>
-    <div>
-      <p style="margin-bottom:1.5rem">İrfan dersleri, Cuma hutbeleri ve hasbihalleri resmi YouTube kanalımızdan takip edebilirsiniz.</p>
-      <a href="https://www.youtube.com/@aliugurozkelesh" target="_blank" class="btn-wf">YouTube'a Abone Ol</a>
+    <div style="flex-shrink:0">
+      <p style="margin-bottom:1.5rem">İrfan dersleri, Cuma hutbeleri ve ufuk açıcı hasbihalleri resmi YouTube kanalımızdan takip edebilirsiniz.</p>
+      <a href="https://www.youtube.com/@aliugurozkelesh" target="_blank" class="btn-primary">YouTube'a Abone Ol</a>
     </div>
   </div>
-  <div class="video-main r">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" allowfullscreen title="Ali Uğur Özkeleş Sohbetleri"></iframe>
+  <div class="video-wrap reveal">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5&autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Ali Uğur Özkeleş Sohbetleri"></iframe>
   </div>
-  <div class="video-grid r">
-    <div class="video-main" style="padding-bottom:52%;border-radius:2px">
-      <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" allowfullscreen title="İrfan Dersleri"></iframe>
+  <div class="video-grid reveal">
+    <div class="video-thumb">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" frameborder="0" allowfullscreen title="İrfan Dersleri"></iframe>
     </div>
-    <div class="video-sm">
-      <div class="video-sm-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" allowfullscreen title="Hutbeler"></iframe></div>
-      <div class="video-sm-item"><iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" allowfullscreen title="Sohbetler"></iframe></div>
+    <div class="video-small">
+      <div class="video-small-item">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" frameborder="0" allowfullscreen title="Cuma Hutbeleri"></iframe>
+      </div>
+      <div class="video-small-item">
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLs5nDg10_R7wqkAzBm88ew5xFc8c_m1O5" frameborder="0" allowfullscreen title="Sohbetler"></iframe>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- İLETİŞİM -->
-<section id="iletisim" class="iletisim">
+<section class="iletisim" id="iletisim">
   <div>
-    <div class="s-label r">06 — İletişim</div>
-    <div class="contact-huge r">
-      İletişime<br>Geçin
+    <div class="section-label">06 — İletişim</div>
+    <div class="contact-big reveal">
+      İletişime<br>Geç
     </div>
-    <div class="contact-links r">
+  </div>
+  <div class="iletisim-footer reveal">
+    <div class="iletisim-links">
       <a href="https://www.youtube.com/@aliugurozkelesh" target="_blank">YouTube</a>
       <a href="mailto:info@aliugurozkelesh.com">E-Posta</a>
       <a href="#kurumlar">Kurumlar</a>
-      <a href="#irfan">İrfan Dersleri</a>
     </div>
-  </div>
-  <div class="iletisim-foot r">
-    <div class="iletisim-copy">© 2026 Ali Uğur Özkeleş</div>
-    <div class="iletisim-copy">Kilis · İstanbul</div>
+    <div class="iletisim-copy">© 2026 Ali Uğur Özkeleş — Tüm hakları saklıdır</div>
   </div>
 </section>
 
@@ -495,7 +453,7 @@ footer p{font-size:.65rem;color:rgba(255,255,255,.18);letter-spacing:.1em;text-t
 
 <script>
 // PROGRESS
-const prog=document.getElementById('prog');
+const prog = document.getElementById('prog');
 window.addEventListener('scroll',()=>{
   const s=document.documentElement.scrollTop;
   const h=document.documentElement.scrollHeight-window.innerHeight;
@@ -506,31 +464,31 @@ window.addEventListener('scroll',()=>{
 const burger=document.getElementById('burger');
 const mMenu=document.getElementById('mobileMenu');
 burger.addEventListener('click',()=>mMenu.classList.toggle('open'));
-document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>mMenu.classList.remove('open')));
+document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>mMenu.classList.remove('open')));
 
 // REVEAL
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
-},{threshold:.1});
-document.querySelectorAll('.r,.r2').forEach(el=>obs.observe(el));
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>observer.observe(el));
 
 // COUNTER
-const cObs=new IntersectionObserver(entries=>{
+const counterObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting)return;
     const el=e.target;
     const target=+el.dataset.target;
     let n=0;
-    const step=Math.ceil(target/40);
+    const step=Math.max(1,Math.floor(target/40));
     const t=setInterval(()=>{
       n=Math.min(n+step,target);
       el.textContent=n+'+';
       if(n>=target)clearInterval(t);
     },40);
-    cObs.unobserve(el);
+    counterObs.unobserve(el);
   });
 },{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>cObs.observe(el));
+document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
 </script>
 </body>
 </html>
