@@ -211,10 +211,15 @@ function doLogin() {
 }
 function logout() { localStorage.removeItem('admin_logged'); location.reload(); }
 
-// INIT
-function init() {
-  const saved = localStorage.getItem('admin_content');
-  if (saved) { try { content = JSON.parse(saved); } catch(e){} }
+// INIT — her zaman content.json'dan oku
+async function init() {
+  try {
+    const r = await fetch('./content.json?t=' + Date.now());
+    content = await r.json();
+  } catch(e) {
+    const saved = localStorage.getItem('admin_content');
+    if (saved) { try { content = JSON.parse(saved); } catch(e2){} }
+  }
   renderAll();
 }
 
