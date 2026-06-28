@@ -1104,6 +1104,7 @@ setInterval(() => {
 <div id="article-modal-overlay" onclick="if(event.target===this)closeArticleModal()">
   <div id="article-modal-box">
     <button id="article-modal-close" onclick="closeArticleModal()">✕</button>
+    <div id="am-banner" style="display:none;width:calc(100% + 5rem);margin:-2.5rem -2.5rem 1.8rem;height:260px;background-size:cover;background-position:center;border-radius:16px 16px 0 0"></div>
     <h2 id="am-title"></h2>
     <div class="meta" id="am-date"></div>
     <div class="body" id="am-body"></div>
@@ -1119,6 +1120,9 @@ function openArticleModal(article) {
   document.getElementById('am-title').textContent = article.title;
   document.getElementById('am-date').textContent = article.date;
   document.getElementById('am-body').textContent = article.content || article.summary || '';
+  const banner = document.getElementById('am-banner');
+  if (article.image) { banner.style.backgroundImage = `url(${article.image})`; banner.style.display = 'block'; }
+  else { banner.style.display = 'none'; }
   const link = document.getElementById('am-link');
   if (article.url) { link.href = article.url; link.style.display = 'inline-flex'; }
   else { link.style.display = 'none'; }
@@ -1152,7 +1156,7 @@ function renderArticles(articles) {
   if (featured) {
     const idx = articles.indexOf(featured);
     html += `<div class="article-featured" style="cursor:pointer" onclick="openArticleModal(window._allArticles[${idx}])">
-      <div class="article-featured-top"><span class="label">Öne Çıkan Yazı</span></div>
+      ${featured.image ? `<div style="height:180px;background:url(${featured.image}) center/cover no-repeat;border-radius:var(--radius) var(--radius) 0 0"></div>` : '<div class="article-featured-top"><span class="label">Öne Çıkan Yazı</span></div>'}
       <div class="article-featured-body">
         <div class="article-featured-date">${featured.date}</div>
         <h3>${featured.title}</h3>
@@ -1164,7 +1168,7 @@ function renderArticles(articles) {
   others.forEach((a, i) => {
     const idx = articles.indexOf(a);
     html += `<div class="article-card" style="cursor:pointer" onclick="openArticleModal(window._allArticles[${idx}])">
-      <div class="article-card-top"></div>
+      ${a.image ? `<div style="height:120px;background:url(${a.image}) center/cover no-repeat"></div>` : '<div class="article-card-top"></div>'}
       <div class="article-card-body">
         <div class="article-card-date">${a.date}</div>
         <h3>${a.title}</h3>
