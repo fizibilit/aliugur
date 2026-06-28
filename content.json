@@ -1,1 +1,41 @@
-{"test":1}
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Oruç Modernizme Direniştir",
+      "date": "29 Nisan 2022",
+      "content": "Modernizm, kapitalizmin ürettiği bir anlayış olması hasebiyle tüketime dayalıdır. İnsan, zevk ve hazlarının peşinde koşarak mutlu olmaya çalışır. Sosyal medyanın yaygınlaşmasıyla birlikte yemek yemek bile artık kamusal bir alana taşınmıştır; oysa geçmişte bu mahremiyet içinde yaşanan bir eylemdi.\n\nOruç ise tam aksine bir mesaj verir: 'Kendini tut.' Açlığı bizzat yaşayan insan, aç olanın hâlini daha iyi anlar. Oruç, empatiyi fiilî bir deneyime dönüştürür.\n\nModernizmin getirdiği obezite salgını ve yüksek intihar oranları, bedenî hazların ruhî doyumu sağlamadığının açık göstergesidir. Çocuklar maddî olarak doyurulurken manevî olarak aç bırakılmaktadır.\n\nDinî pratikler örf ve âdete dönüştüğünde terbiye edici işlevini yitirir. Oruç bizi bir direnişe sevk eder; bize bir otokontrol mekanizması kazandırır. Oruç bizi insan yapar.",
+      "url": "https://www.haberdurus.com/kose-yazilari/oruc_modernizme_direnistir-3601",
+      "featured": true,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "title": "Küreselleşen Dünyada Mülteci Meselesi",
+      "date": "25 Ağustos 2021",
+      "content": "Küreselleşme, bir yanda iletişim ve ulaşımı inanılmaz biçimde kolaylaştırırken öte yanda dünyanın geri kalmış bölgelerinde yaşayan insanların gözleri önünde gelişmiş ülkelerin yaşam standartlarını sergilemektedir. Bu görüntü, güçlü bir göç isteği doğurmaktadır.\n\nİnsan selinin önünde hiçbir engel kolay kolay duramaz. Duvarlar, tel örgüler, deniz karakolları… Bunların hiçbiri kökten çözüm üretemiyor; zira meselenin kaynağı ekonomik ve siyasi eşitsizliktir.\n\nOrtadoğu coğrafyasındaki çatışmalar bu göç dalgasını daha da hızlandırmaktadır. Çözüm, insanların kendi topraklarında onurlu bir hayat sürebilmelerine zemin hazırlamaktan geçmektedir.\n\nİslam toplumlarının 'dünyada insan cennetini kurma' ideali yalnızca ahiret vaadi değil, bu dünyada da insanı mutlu kılmayı hedefleyen bir sorumluluk bilincidir.",
+      "url": "https://www.haberdurus.com/kose-yazilari/kuresellesen_dunyada_multeci_meselesi-3051",
+      "featured": false,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "title": "Tanrılaşan İnsan — Homo Deus",
+      "date": "2 Ocak 2021",
+      "content": "Her insanın içinde gizli bir tanrılaşma arzusu vardır. Bu arzu tarihin her döneminde farklı biçimler almıştır: Firavun, Nemrut, Sezar… İktidar sahipleri kendilerini ilahî bir konuma yerleştirmiş; halk da zaman zaman bu yanılsamayı beslemiştir.\n\nNietzsche'nin 'Tanrı öldü, yaşasın insan!' nidası, 20. yüzyılın en belirleyici kırılma noktalarından birini işaret eder. Modern hümanizm, ilahî rehberliği devre dışı bırakarak bireyi kendi ahlakının belirleyicisi ilan etmiştir.\n\nBu süreç homo sapiens'ten homo deus'a uzanan tehlikeli bir yolculuktur. Tanrı hayattan çekildiğinde insanlar kendi tanrılarını yaratmaya başlar; bu tanrılar kimi zaman ideoloji, kimi zaman teknoloji, kimi zaman lider kültü biçimini alır.\n\nOysa gerçek insan onuru, sınırlarını bilerek Yaratıcı'ya kulluk etmekten doğar. Büyüklük iddiası değil, tevazu; tahakküm değil, hizmet… İşte insanı insan yapan budur.",
+      "url": "https://www.haberdurus.com/kose-yazilari/tanrilasan_insan_-_homo_deus-2631",
+      "featured": false,
+      "image": ""
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "title": "Analar ve Oğullar — Hz. Meryem ve Hz. İsa",
+      "date": "2024",
+      "summary": "Hz. Meryem'in hayatı, sabrı ve Hz. İsa'nın doğuşu üzerine derin bir sohbet.",
+      "url": "https://www.youtube.com/live/7D_c4COrxxY",
+      "youtube_id": "7D_c4COrxxY"
+    }
+  ]
+}
